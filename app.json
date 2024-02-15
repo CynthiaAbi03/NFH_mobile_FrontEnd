@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "NFH_mobileApplication",
+    "slug": "NFH_mobileApplication",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./src/assets/fonts/Poppins-Light.ttf",
+            "./src/assets/fonts/Poppins-Regular.ttf",
+            "./src/assets/fonts/Poppins-Medium.ttf",
+            "./src/assets/fonts/Poppins-SemiBold.ttf"
+          ]
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bd6a3079-6e14-4402-b14e-42bb516f1de4"
+      }
+    }
+  },
+  "name": "NFH_mobileApplication"
+}
