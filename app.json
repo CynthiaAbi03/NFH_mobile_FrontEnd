@@ -19,6 +19,11 @@
         }
       ]
     ],
+    "android": {
+      "package": "com.nativenotify.NFHfire",
+      "versionCode": 1,
+      "googleServicesFile": "./google-services.json"
+    },
     "extra": {
       "eas": {
         "projectId": "bd6a3079-6e14-4402-b14e-42bb516f1de4"

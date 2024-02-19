@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "820618982382",
+    "project_id": "nfhfire",
+    "storage_bucket": "nfhfire.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820618982382:android:4258d55f6b5c3f91c654ff",
+        "android_client_info": {
+          "package_name": "com.nativenotify.NFHfire"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj2zQchU7JGz9aZcUn11KAZ_uJ5TE1EUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

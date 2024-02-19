@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useCallback, useState, useRef } from 'react';
-import { LogBox } from 'react-native';
-import registerNNPushToken from 'native-notify';
+import axios  from 'axios';
+// import registerNNPushToken from 'native-notify';
 import {
   View,
   Text,
@@ -17,6 +17,7 @@ import PoppinsLight from '../../assets/fonts/Poppins-Light.ttf';
 import PoppinsRegular from '../../assets/fonts/Poppins-Regular.ttf';
 import PoppinsSemiBold from '../../assets/fonts/Poppins-SemiBold.ttf';
 import PoppinsMedium from '../../assets/fonts/Poppins-Medium.ttf';
+import { io } from "socket.io-client";
 import {
   SafeAreaProvider,
   useSafeAreaInsets,
@@ -24,22 +25,53 @@ import {
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import * as Font from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-LogBox.ignoreLogs(['new NativeEventEmitter']); 
 
 
 SplashScreen.preventAutoHideAsync();
 
+
+
 export default function DashBoardScreen() {
-  
-   registerNNPushToken(19669, 'jFGfEKcN2MgkdaT9v0xlgq');
+  // registerNNPushToken(19669, 'jFGfEKcN2MgkdaT9v0xlgq');
+
   const styles = useStyles();
   const [notificationClicked, setNotificationClicked] = useState(false);
   const [notificationCount, setNotificationCount] = useState();
-  const [serverState, setServerState] = React.useState('Loading...');
-  const [stateOfSystem, setStateOfSystem] = useState('');
-  const [serverMessages, setServerMessages] = React.useState([]);
+  const [serverMessage, setServerMessage] = useState('')
+ 
 
+ 
 
+  // var serverMessage;
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       // const response = await axios.post('https://0d81-129-0-226-215.ngrok-free.app/index.html', 'hello');
+  //       const response = await axios.get(
+  //         'https://0d81-129-0-226-215.ngrok-free.app/mobile/19JJk',
+  //         {
+  //           headers: {
+  //             'ngrok-skip-browser-warning': 'true'
+  //           }
+  //         }
+  //       );
+  //       // serverData = response.data;
+  //       // serverMessage = serverData[0];
+  //       const serverResponse = response.data;
+  //       setServerMessage(serverResponse[0])
+  //       console.log('Response:', response.data);
+  //     } catch (error) {
+  //       console.error('Error:', error);
+  //     }
+  //   };
+
+  
+  //   fetchData();
+
+  // },[]);
+  
+  
   const [fontsLoaded, fontError] = useFonts({
     'Poppins-Regular': PoppinsRegular,
     'Poppins-Medium': PoppinsMedium,
@@ -62,34 +94,28 @@ export default function DashBoardScreen() {
     if (notificationClicked) {
       setNotificationCount(0);
     }
-    console.log('i have been pressed');
+   
   };
 
-  // const notificationMessages = [
-  //   'Presence de fumées',
-  //   'Temperature elevée',
-  //   'Alarmes déclenchées',
-  //   'Presence de Feu',
-  // ];
-
-  const serverMessage = {
-    active: 1,
-    smokeDetected: false,
+  // Assuming you want to access these values for the first serverMessage
+  console.log('hello', serverMessage)
+  const serverMessagepp = {
+    systemState: 0,
+    smokeDetected: true,
     fireDetected: false,
-    temperature: 30,
-  };
-
-  const systemState00 = serverMessage.active;
-  const smoke = serverMessage.smokeDetected;
-  const fire = serverMessage.fireDetected;
-  const temperature = serverMessage.temperature;
+    temperature: 30
+  }
+  const systemState00 = serverMessagepp.systemState;
+  const smoke = serverMessagepp.smokeDetected;
+  const fire = serverMessagepp.fireDetected;
+  const temperature = serverMessagepp.temperature;
 
   let notificationMessages = [];
 
   switch (systemState00) {
     case 0:
       notificationMessages = [];
-      length = notificationMessages.length;
+      
 
       break;
     case 1:
@@ -97,7 +123,7 @@ export default function DashBoardScreen() {
         'Presence de fumées',
         'Premiere alarme declenchée',
       ];
-      length = notificationMessages.length;
+      
 
       break;
     case 2:
@@ -107,10 +133,11 @@ export default function DashBoardScreen() {
         'Alarmes déclenchées',
         'Presence de Feu',
       ];
-      length = notificationMessages.length;
+      
 
       break;
   }
+  const length = notificationMessages.length;
   // const scrollOffsetY = useRef(new Animated.Value(0)).current;
 
   return (

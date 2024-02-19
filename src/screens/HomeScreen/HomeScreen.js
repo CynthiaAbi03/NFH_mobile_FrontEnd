@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
+import { io } from "socket.io-client";
 import {
   StyleSheet,
   Text,
@@ -63,6 +64,17 @@ export default function HomeScreen() {
   if (!fontsLoaded && !fontError) {
     return null;
   }
+
+
+
+
+    // const socket = io('http://localhost:3000');
+    
+
+    // socket.on('connect', () => {
+    //   console.log('Connected to the server');
+    // });
+ 
 
   
   return (
