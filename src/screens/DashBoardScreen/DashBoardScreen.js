@@ -100,7 +100,7 @@ export default function DashBoardScreen() {
   // Assuming you want to access these values for the first serverMessage
   console.log('hello', serverMessage)
   const serverMessagepp = {
-    systemState: 0,
+    systemState: 1,
     smokeDetected: true,
     fireDetected: false,
     temperature: 30
@@ -413,13 +413,13 @@ export default function DashBoardScreen() {
                   case 0:
                     return (
                       <Image
-                        source={require('../../assets/images/red_cross_circle.png')}
+                        source={require('../../assets/images/green_tick.png')}
                       />
                     );
                   case 1:
                     return (
                       <Image
-                        source={require('../../assets/images/red_cross_circle.png')}
+                        source={require('../../assets/images/green_tick.png')}
                       />
                     );
                   case 2:
